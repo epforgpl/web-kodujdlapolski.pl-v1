@@ -67,6 +67,7 @@
 			?>
 				<section class="projects-brigade row">
 					<h1 class="projects-brigade-title">Projekty brygady</h1>
+					<div>
 					<?php foreach( $posts as $post): ?>
 						<?php setup_postdata($post); ?>
 						<div class="projects-brigade-col">
@@ -89,6 +90,7 @@
 						</div>
 					<?php endforeach; ?>
 					<?php wp_reset_postdata(); ?>
+					</div>
 				</section>
 			<?php endif; ?>
 		</article>

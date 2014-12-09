@@ -7067,6 +7067,9 @@ body a:hover {
     width: 33.33333333%;
   }
 }
+.Brigade-body .projects-brigade-col:nth-child(3n+1) {
+  clear: left;
+}
 .Brigade-body .projects-brigade-col-image img {
   display: block;
   max-width: 100%;

@@ -1,21 +1,62 @@
 <?php  	
-		/*if ( ! function_exists( 'wp_handle_upload' ) ) require_once( ABSPATH . 'wp-admin/includes/file.php' );
-		$uploadedfile = $_FILES['file'];
-		$upload_overrides = array( 'test_form' => false );
-		$movefile = wp_handle_upload( $uploadedfile, $upload_overrides );
-		if ( $movefile ) {
-		    $wp_filetype = $movefile['type'];
-		    $filename = $movefile['file'];
-		    $wp_upload_dir = wp_upload_dir();
-		    $attachment = array(
-		        'guid' => $wp_upload_dir['url'] . '/' . basename( $filename ),
-		        'post_mime_type' => $wp_filetype,
-		        'post_title' => preg_replace('/\.[^.]+$/', '', basename($filename)),
-		        'post_content' => '',
-		        'post_status' => 'inherit'
-		    );
-		    $attach_id = wp_insert_attachment( $attachment, $filename);
-		}*/
+		require_once("../../../../wp-load.php");
+		
+		
+		//ZAPIS PLIKU
+		
+		if($_FILES["file"]["name"]){
+		 
+			$target_dir = "../../../uploads/emails/";
+			$target_file = $target_dir . basename($_FILES["file"]["name"]);
+			$uploadOk = 1;
+			
+			
+			$allowedExts = array(
+			  "pdf", 
+			  "doc", 
+			  "docx"
+			); 
+			
+			$allowedMimeTypes = array( 
+			  'application/msword',
+			  'application/pdf'
+			);
+	
+			$extension = end(explode(".", $_FILES["file"]["name"]));
+			
+			// Czy to rozszerzenie jest dozwolone
+			if ( ! ( in_array($extension, $allowedExts ) ) ) {
+			  echo "Niedozwolone rozszerzenie pliku!<br>";
+			  $uploadOk = 0;
+			}
+			
+			// Czy ten typ pliku jest dozwolony
+			if ( ! (in_array( $_FILES["file"]["type"], $allowedMimeTypes ) ) ) {
+				echo "Niedozwolony typ pliku!<br>";
+				$uploadOk = 0;
+			}
+			    
+				// Czy taki plik już istnieje
+				if (file_exists($target_file)) {
+				    echo "Taki plik już istnieje.<br>";
+				    $uploadOk = 0;
+				}
+				
+	
+			if ($uploadOk == 0) {
+			    echo "Wystąpił błąd w zapisie załącznika.<br>";
+			// if everything is ok, try to upload file
+			} else {
+			    if (move_uploaded_file($_FILES["file"]["tmp_name"], $target_file)) {
+			    	$attachments = array( WP_CONTENT_DIR . '/uploads/emails/' . $_FILES["file"]["name"] );
+			        //echo "The file ". basename( $_FILES["file"]["name"]). " has been uploaded.";
+			    } else {
+			        echo "Wystąpił błąd w zapisie załącznika.<br>";
+			    }
+			}
+		}
+
+		
 		
 		
 		$toemail = $_POST['email_send'];
@@ -24,23 +65,42 @@
 		$nazwisko = $_POST['nazwisko'];
 		$stanowisko = $_POST['stanowisko'];
 		$tresc = $_POST['tresc'];
-		$plik = $_POST['plik'];
 		
+		if ($stanowisko == "Zaproponuj temat"){
+			$temat = "=?utf-8?B?".base64_encode("Nowa propozycja tematu od {$imie} {$nazwisko}")."?=";
+			$wiadomosc = "
+			Otrzymałeś/aś nową propozycje tematu od {$imie} {$nazwisko}. 
+			
+			Oto jego treść:
+			<b>{$tresc}</b>
+			
+			Stanowisko: <b>P$stanowisko}</b>
+			
+			
+			---
+			Koduj dla Polski
+			";
+		} else {
+			$temat = "=?utf-8?B?".base64_encode("Nowe zgłoszenie od {$imie} {$nazwisko}")."?=";
+			$wiadomosc = "
+			Otrzymałeś/aś nowe zgłoszenie od {$imie} {$nazwisko}. 
+			
+			Oto jego treść:
+			<b>{$tresc}</b>
+			
+			Stanowisko: <b>{$stanowisko}</b>
+			
+			
+			---
+			Koduj dla Polski
+			";
+		}
 		
-		$temat = "=?utf-8?B?".base64_encode("Nowe zgłoszenie od {$imie} {$nazwisko}")."?=";
-		$wiadomosc = "
-		$tresc
-		$stanowisko
-		";
 									
-		$headers = 'From: =?utf-8?B?'.base64_encode("Koduj dla Polski").'?= <'. $email . '>' . "\r\n" .
-			   'X-Mailer: PHP/' . phpversion() . "\r\n" .
-			   'Content-type: text/plain; charset=utf-8' . "\r\n";
+		$headers = 'From: ' . $email . ' <mailer@kodujdlapolski.pl>' . "\r\n";
+		
+		wp_mail($toemail, $temat, $wiadomosc, $headers, $attachments);
 							
-			   mail($toemail, $temat, $wiadomosc, $headers);
-	
-		echo $imie . " " . $nazwisko . " " . $toemail . " " . $email . " " . $stanowisko . " " . $tresc;
-		echo $plik;
-		echo "Wiadomość została wysłana!";
-	
+		
+		echo "Wiadomość została wysłana!";		
 ?>

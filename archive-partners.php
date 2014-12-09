@@ -14,6 +14,7 @@
 			<?php while ( have_posts() ) : the_post(); ?>
 				<div class="Page-body-row clearfix">
 					<?php if( have_rows('partners') ): ?>
+						<?php if(get_field('show_partners') ): ?>
 						<h3 class="head-title"><?php the_title(); ?></h3>
 						<div class="Page-body-row-images">
 						<?php while( have_rows('partners') ): the_row();  ?>
@@ -34,6 +35,7 @@
 								<?php endif; ?>
 						<?php endwhile; ?>
 						</div>
+						<?php endif; ?>	
 					<?php endif; ?>	
 				</div>
 			<?php endwhile; wp_reset_postdata(); ?>

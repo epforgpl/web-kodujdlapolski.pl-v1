@@ -1,59 +1,103 @@
-<?php
-	$email = $_GET['email'];
+<?php 
+	require_once("../../../../wp-load.php");
 	$pozycja = $_GET['pozycja'];
+	$email = $_GET['email'];
+
 ?>
 
-<form role="form" id="form" action="" method="post" enctype="multipart/form-data">
+<form role="form" id="form" action="<?php bloginfo('template_url'); ?>/framework/email.php" method="post" enctype="multipart/form-data">
 	  <div class="form-group">
-	    <label for="name">Imię</label>
-	    <input type="name" id="imie" class="form-control">
+	    <label for="imie">Imię</label>
+	    <input type="text" id="imie" name="imie" class="form-control"/>
+	    <label class="error" for="imie" id="imie_error">To pole jest wymagane.</label>
 	  </div>
 	  <div class="form-group">
-	    <label for="surname">Nazwisko</label>
-	    <input type="surname" id="nazwisko" class="form-control">
+	    <label for="nazwisko" >Nazwisko</label>
+	    <input type="text" id="nazwisko" name="nazwisko" class="form-control"/>
+	    <label class="error" for="nazwisko" id="nazwisko_error">To pole jest wymagane.</label>
 	  </div>
 	  <div class="form-group">
 	    <label for="email">Email</label>
-	    <input type="email" id="email" class="form-control">
+	    <input type="text" id="email" name="email" class="form-control"/>
+	    <label class="error" for="email" id="email_error">To pole jest wymagane.</label>
 	  </div>
 	  <div class="form-group">
 	    <label for="tresc">Treść</label>
-	    <textarea id="tresc" class="form-control" rows="3"></textarea>
+	    <textarea id="tresc" name="tresc" class="form-control" rows="3"></textarea>
+	    <label class="error" for="tresc" id="tresc_error">To pole jest wymagane.</label>
 	  </div>
 	  <div class="form-group">
 	    <label for="file">Wyślij plik</label>
-	    <input type="file" id="file">
+	    <input type="file" id="file" name="file"/>
 	  </div>
-	  <input type="hidden" value="<?php echo $pozycja; ?>" id="stanowisko">
-	  <input type="hidden" value="<?php echo $email; ?>" id="email_send">
-	  <button type="submit" class="btn btn-primary btn-lg btn-block">Wyślij</button>
+	  <input type="hidden" value="<?php echo $pozycja; ?>" id="stanowisko" name="stanowisko"/>
+	  <input type="hidden" value="<?php echo $email; ?>" id="email_send" name="email_send"/>
+	  <button type="submit" class="btn btn-primary btn-lg btn-block send">Wyślij</button>
 </form>
 
-<script type"text/javascript">
+<script type="text/javascript">
 
-$("#form").bind("submit", function () {
 
-	var formData = {
-            'imie'              : $('input[id=imie]').val(),
-            'nazwisko'          : $('input[id=nazwisko]').val(),
-            'email_send'        : $('input[id=email_send]').val(),
-            'stanowisko'        : $('input[id=stanowisko]').val(),
-            'email'             : $('input[id=email]').val(),
-            'tresc'             : $('textarea[id=tresc]').val(),
-            'plik'              : $('input[id=file]').val(),
-        };
-	//data = new FormData($('#form')[0]);
-    $.fancybox.showLoading(); // it was $.fancybox.showActivity(); for v1.3.4
-    $.ajax({
-        type: "POST",
-        cache: false,
-        url: "http://kdp.frontlabs.pl/wp-content/themes/kdp/framework/email.php", // make sure your path is correct
-        data: formData, // your were using $(form).serialize(),
-        success: function (data) {
-            $.fancybox(data);
-        }
-    });
-    return false;
-}); // bind
+ $(function() {
+	$('.error').hide();
+	    $("#form").submit(function(e) {
+	    
+	    	$('.error').hide();
+		  	  var imie = $("input#imie").val();
+		  		if (imie == "") {
+		        $("label#imie_error").show();
+		        $("input#imie").focus();
+		        return false;
+		      }
+		      
+		      var nazwisko = $("input#nazwisko").val();
+		  		if (nazwisko == "") {
+		        $("label#nazwisko_error").show();
+		        $("input#nazwisko").focus();
+		        return false;
+		      }
+		      
+		      var email = $("input#email").val();
+		  		if (email == "") {
+		        $("label#email_error").show();
+		        $("input#email").focus();
+		        return false;
+		      }
+		      
+		      var tresc = $("textarea#tresc").val();
+		  		if (tresc == "") {
+		        $("label#tresc_error").show();
+		        $("textarea#tresc").focus();
+		        return false;
+		      }
+		      
+	      
+	    var formObj = $(this);
+	    var formURL = formObj.attr("action");
+	    var formData = new FormData(this);
+	      
+		  		  
+		  $.fancybox.showLoading();
+		  $.ajax({
+	        url: formURL,
+			type: 'POST',
+	        data:  formData,
+			mimeType:"multipart/form-data",
+			contentType: false,
+	        cache: false,
+	        processData:false,
+			success: function(data, textStatus, jqXHR)
+	    {
+			$.fancybox(data);
+	    },
+	     error: function(jqXHR, textStatus, errorThrown) 
+	     {
+	     }          
+	    });
+	    e.preventDefault();
+	    
+	 });
+});
+
 
 </script>

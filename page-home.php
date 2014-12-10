@@ -141,6 +141,7 @@ $until_unix_timestamp = strtotime($until_date);
 		$args = array(
 			'post_type' => 'projects',
 			'posts_per_page' => 5,
+            'orderby' => 'rand'
 		);
 		$q = new WP_Query($args);
 	?>

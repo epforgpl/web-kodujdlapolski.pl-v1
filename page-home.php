@@ -58,6 +58,7 @@ $until_unix_timestamp = strtotime($until_date);
 	<table class="stats">
 	<tr>
 		<td>
+            <a href="http://forum.kodujdlapolski.pl" target="_blank" style="color: #333333;">
 			<div class="clearfix">
 				<figure class="stats-image">
 				<img src="<?php bloginfo('template_url'); ?>/images/icon-stats-registered.png" width="" height="" alt="">
@@ -67,8 +68,10 @@ $until_unix_timestamp = strtotime($until_date);
 					<strong class="stats-info-number"><?php the_field('count_user'); ?></strong>
 				</div>
 			</div>
+            </a>
 		</td>
 		<td>
+            <a href="http://forum.kodujdlapolski.pl/category/pomysly" target="_blank" style="color: #333333;">
 			<div class="clearfix">
 				<figure class="stats-image">
 				<img src="<?php bloginfo('template_url'); ?>/images/icon-stats-ideas.png" width="" height="" alt="">
@@ -83,8 +86,10 @@ $until_unix_timestamp = strtotime($until_date);
 				?></strong>
 				</div>
 			</div>
+            </a>
 		</td>
 		<td>
+            <a href="/brygady" style="color: #333333;">
 			<div class="clearfix">
 				<figure class="stats-image">
 				<img src="<?php bloginfo('template_url'); ?>/images/icon-stats-teams.png" width="" height="" alt="">
@@ -96,8 +101,10 @@ $until_unix_timestamp = strtotime($until_date);
 						echo $count_posts->publish; ?></strong>
 				</div>
 			</div>
+            </a>
 		</td>
 		<td>
+            <a href="/projekty" style="color: #333333;">
 			<div class="clearfix">
 				<figure class="stats-image">
 				<img src="<?php bloginfo('template_url'); ?>/images/icon-stats-projects.png" width="" height="" alt="">
@@ -108,6 +115,7 @@ $until_unix_timestamp = strtotime($until_date);
 						echo $count_posts->publish; ?></strong>
 				</div>
 			</div>
+            </a>
 		</td>
 	</tr>
 	</table>

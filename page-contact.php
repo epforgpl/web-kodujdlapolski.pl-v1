@@ -13,13 +13,26 @@
 
 		<article class="Page-body row">
 		<?php if( have_rows('contact') ): ?>
+            <div class="Page-body-contacts row">
+                <?php the_row();  ?>
+                <div class="contact-col">
+                    <h3 class="contact-col-name"><?php the_sub_field('name'); ?></h3>
+                    <span class="contact-col-position" ><?php the_sub_field('position'); ?></span>
+                    <p class="contact-col-details">
+                        tel. <?php the_sub_field('phone'); ?><br>
+                        <a href="mailto:<?php the_sub_field('mail'); ?>" ><?php the_sub_field('mail'); ?></a>
+                    </p>
+                </div>
+            </div>
 			<div class="Page-body-contacts row">
 			<?php while( have_rows('contact') ): the_row();  ?>
 				<div class="contact-col">
 					<h3 class="contact-col-name"><?php the_sub_field('name'); ?></h3>
 					<span class="contact-col-position" ><?php the_sub_field('position'); ?></span>
 					<p class="contact-col-details">
+                        <?php if(has_sub_field('phone')): ?>
 						tel. <?php the_sub_field('phone'); ?><br>
+                        <?php endif; ?>
 						<a href="mailto:<?php the_sub_field('mail'); ?>" ><?php the_sub_field('mail'); ?></a>
 					</p>
 				</div>

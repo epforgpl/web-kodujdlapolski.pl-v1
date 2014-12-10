@@ -35,7 +35,7 @@
 	<div class="container">
 		<div class="row">
 		<div class="eLogo">
-			<a target="_blank" href="http://epf.org.pl/">Projekt Fundacji ePaństwo</a>
+			<a target="_blank" href="http://epf.org.pl/">Program Fundacji ePaństwo</a>
 		</div>
 		</div>
 	</div>

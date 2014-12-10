@@ -6383,7 +6383,7 @@ body a:hover {
   overflow: hidden;
   -webkit-box-shadow: #ededed 5px 5px 0;
   -moz-box-shadow: #ededed 5px 5px 0;
-  box-shadow: #ff0000 5px 5px 0;
+  box-shadow: #ededed 5px 5px 0;
 }
 .threeBoxes-image > img {
   width: 100%;

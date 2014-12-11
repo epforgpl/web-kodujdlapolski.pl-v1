@@ -26,7 +26,6 @@ Wordpress pluginy:
 - Advanced Custom Fields 4.3.9
 - Advanced Custom Fields: Date & Time Picker 2.0.18.1
 - Advanced Custom Fields: Repeater Field 1.1.1
-- Akismet: 3.0.2
 - Breadcrumb NavXT 5.1.1
 - Formularze 4.0.1
 - Map Cap 2.1

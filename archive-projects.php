@@ -14,6 +14,7 @@
 
 			<?php while ( have_posts() ) : the_post(); ?>
 				<article class="Projects-col">
+                    <a href="<?php the_permalink(); ?>">
 				<figure class="Projects-image">
 					<?php
 						$img = get_field('img_header');
@@ -24,7 +25,8 @@
 					?>
 					<span class="helper"></span><img src="<?php echo $img_mini ; ?>" width="<?php echo $width ; ?>" height="<?php echo $height ; ?>">
 				</figure>
-				<h1 class="Projects-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
+				<h1 class="Projects-title"><?php the_title(); ?></h1>
+                    </a>
 				<p class="Projects-description"><?php the_content('', true); ?></p>
 			</article><!-- / .Projects-col -->
 			<?php endwhile; ?>

@@ -37,7 +37,7 @@
 			</article>
 			<?php if( have_rows('team') ): ?>
 			<section class="Team row">
-				<h1 class="Team-title">Team</h1>
+				<h1 class="Team-title">Zespół</h1>
 				<?php while( have_rows('team') ): the_row();  ?>
 					<div class="Team-row">
 						<figure class="Team-row-photo">

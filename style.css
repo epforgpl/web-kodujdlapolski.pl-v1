@@ -6700,7 +6700,7 @@ body a:hover {
 }
 .Projects-body .Projects-col a {
 }
-.Projects-body .Projects-col .Projects-title h1 {
+.Projects-body .Projects-col h1.Projects-title {
   color: #d20a11;
   font-size: 20px;
 }
@@ -6971,9 +6971,7 @@ body a:hover {
   height: auto;
 }
 .Brigades-body-col-title {
-  margin: 10px 0 30px 0;
-}
-.Brigades-body-col-title a {
+  margin: 15px 0 30px 0;
   color: #d20a11;
   font-size: 28px;
 }

@@ -13,6 +13,7 @@
 		<div class="Brigades-body row">
 			<?php while ( have_posts() ) : the_post(); ?>
 				<article class="Brigades-body-col">
+					<a href="<?php the_permalink(); ?>">
 					<figure class="Brigades-body-col-image">
 						<?php
 							$img = get_field('img');
@@ -23,7 +24,7 @@
 						?>
 						<img src="<?php echo $img_mini ; ?>" width="<?php echo $width ; ?>" height="<?php echo $height ; ?>">
 					</figure>
-					<h1 class="Brigades-body-col-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
+					<h1 class="Brigades-body-col-title"><?php the_title(); ?></h1></a>
 				</article>
 			<?php endwhile; ?>
 	</div>

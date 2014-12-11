@@ -24,7 +24,7 @@
 
 			<?php if( have_rows('team') ): $i=0; ?>
 				<section class="members">
-					<h1 class="members-title">Członkowie brygady</h1>
+					<h1 class="members-title">Koordynatorzy</h1>
 						<?php while( have_rows('team') ): the_row();  ?>
 							<?php if( ($i==0) || ($i==1) ){ ?>
 							<div class="members row"> <?php } ?>

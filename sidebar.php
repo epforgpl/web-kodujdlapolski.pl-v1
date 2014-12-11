@@ -1,5 +1,5 @@
 <section class="sidebar" >
-	<h2 class="head-title-projects"><a href="/projekty">Zobacz także</a></h2>
+	<h2 class="head-title-projects spacer"><span><a href="/projekty">Zobacz także</a></span></h2>
 	<?php
 		$args = array(
 			'post_type' => 'projects',

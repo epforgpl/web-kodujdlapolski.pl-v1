@@ -53,7 +53,7 @@
 							<figure class="member-col-photo">
 								<img src="<?php bloginfo('template_url'); ?>/images/image-add-brigade.jpg" width="" height="" alt="">
 							</figure>
-							<h2 class="member-col-title"><a class="open_ajax" href="<?php bloginfo('template_url'); ?>/framework/project-email.php?email=<?php echo $email ?>&pozycja=Brygada%20<?php the_title(); ?>">Dołącz <br>do brygady</a></h2>
+							<h2 class="member-col-title"><a class="open_ajax" href="<?php bloginfo('template_url'); ?>/framework/project-email.php?id=<?php echo $post->ID; ?>&pozycja=Brygada%20<?php the_title(); ?>">Dołącz <br>do brygady</a></h2>
 						</div>
 						<?php endif; ?>
 					</div>
@@ -111,7 +111,7 @@
 							</h1>
 							<?php $email = get_field('email');
 							if( !empty($email) ): ?>
-								<a style="margin-top: 0" href="<?php bloginfo('template_url'); ?>/framework/events-email.php?email=<?php echo $email ?>&pozycja=Zaproponuj%20temat" class="btn btn--reversed open_ajax">Zaproponuj temat</a>
+								<a style="margin-top: 0" href="<?php bloginfo('template_url'); ?>/framework/events-email.php?id=<?php echo $post->ID; ?>&pozycja=Zaproponuj%20temat" class="btn btn--reversed open_ajax">Zaproponuj temat</a>
 							<?php endif; ?>
 
 						<?php else: ?>

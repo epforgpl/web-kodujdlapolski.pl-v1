@@ -6128,7 +6128,7 @@ body a:hover {
 }
 @media (max-width: 767px) {
   .header {
-    height: 600px;
+    height: 300px;
   }
 }
 @media (min-width: 768px) {
@@ -6161,8 +6161,12 @@ body a:hover {
 }
 @media (max-width: 767px) {
   .header-title {
-    bottom: 425px;
-    right: 25px;
+	bottom: 0px;
+	right: 0px;
+	left: 0px;
+	top: 0px;
+	padding: 20px;
+	background-color: rgba(0, 0, 0, 0.3);
   }
 }
 @media (min-width: 768px) {
@@ -6192,6 +6196,7 @@ body a:hover {
 @media (max-width: 768px) {
   .header-latest {
     width: 100%;
+    display: none;
   }
 }
 .header-latest-in {
@@ -6626,13 +6631,24 @@ body a:hover {
 .section-head .breadcrumbs li:last-child:after {
   display: none;
 }
+@media (max-width: 767px) {
+	.section-head .section-headline {
+		font-size: 40px !important;
+	}
+}
 .section-head .section-headline {
   color: #d20a11;
   font-size: 70px;
   margin-bottom: 70px;
+  word-wrap: break-word;
 }
 /* === Projects
 =================================== */
+.Projects-body .Projects-col .Projects-image {
+	height: 198px;
+	white-space: nowrap;
+	overflow: hidden;
+}
 .Projects-body {
   margin-top: 40px;
 }
@@ -6664,7 +6680,11 @@ body a:hover {
 .Projects-body .Projects-col img {
   width: 100%;
   height: auto;
-  display: block;
+}
+.Projects-body .Projects-col .helper {
+  display: inline-block; 
+  height: 100%; 
+  vertical-align: middle;
 }
 .Projects-body .Projects-col .Projects-title {
   margin: 0 0 10px 0;

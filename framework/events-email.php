@@ -1,7 +1,7 @@
 <?php 
 	require_once("../../../../wp-load.php");
 	$pozycja = $_GET['pozycja'];
-	$email = $_GET['email'];
+	$id = $_GET['id'];
 
 ?>
 
@@ -31,7 +31,7 @@
 	    <input type="file" id="file" name="file"/>
 	  </div>
 	  <input type="hidden" value="<?php echo $pozycja; ?>" id="stanowisko" name="stanowisko"/>
-	  <input type="hidden" value="<?php echo $email; ?>" id="email_send" name="email_send"/>
+	  <input type="hidden" value="<?php echo $id; ?>" id="id" name="id"/>
 	  <button type="submit" class="btn btn-primary btn-lg btn-block send">Wyślij</button>
 </form>
 

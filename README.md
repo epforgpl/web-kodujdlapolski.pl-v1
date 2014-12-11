@@ -33,3 +33,11 @@ Wordpress pluginy:
 - Members 0.2.4
 - Regenerate Thumbnails 2.2.4
 
+wp-config.php:
+- ustawić namiary na bazę danych
+- ustawić namiary na mailer:
+```
+define('MAILER_USER', 'user@gmail.com');
+define('MAILER_PASS', 'Password1');
+```
+

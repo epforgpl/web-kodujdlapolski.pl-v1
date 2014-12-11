@@ -1,6 +1,7 @@
 <?php  	
 		require_once("../../../../wp-load.php");
-		
+		date_default_timezone_set('Etc/UTC');
+		require 'phpMailer/PHPMailerAutoload.php';
 		
 		//ZAPIS PLIKU
 		
@@ -57,50 +58,80 @@
 		}
 
 		
+		$id = $_POST['id'];
+		$toemail = get_field('email', $id);
 		
-		
-		$toemail = $_POST['email_send'];
 		$email = $_POST['email'];
 		$imie = $_POST['imie'];
 		$nazwisko = $_POST['nazwisko'];
 		$stanowisko = $_POST['stanowisko'];
 		$tresc = $_POST['tresc'];
 		
+		$tresc = nl2br($tresc);
+		
 		if ($stanowisko == "Zaproponuj temat"){
-			$temat = "=?utf-8?B?".base64_encode("Nowa propozycja tematu od {$imie} {$nazwisko}")."?=";
+			$temat = "[KdP] Propozycja tematu od {$imie} {$nazwisko}";
 			$wiadomosc = "
-			Otrzymałeś/aś nową propozycje tematu od {$imie} {$nazwisko}. 
+			Otrzymałeś/aś nową propozycje tematu od <b>{$imie} {$nazwisko}</b>.<br><br> 
 			
-			Oto jego treść:
-			<b>{$tresc}</b>
+			Oto jego treść:<br>
+			<i>{$tresc}</i>
 			
-			Stanowisko: <b>P$stanowisko}</b>
-			
-			
-			---
+			<br><br>---<br>
 			Koduj dla Polski
 			";
 		} else {
-			$temat = "=?utf-8?B?".base64_encode("Nowe zgłoszenie od {$imie} {$nazwisko}")."?=";
-			$wiadomosc = "
-			Otrzymałeś/aś nowe zgłoszenie od {$imie} {$nazwisko}. 
+			$temat = "[KdP] Zgłoszenie do projektu od {$imie} {$nazwisko}";
+			$wiadomosc = " 
+			Otrzymałeś/aś nowe zgłoszenie od <b>{$imie} {$nazwisko}</b> na stanowisko <b>{$stanowisko}</b>.<br><br> 
 			
-			Oto jego treść:
-			<b>{$tresc}</b>
+			Oto jego treść:<br>
+			<i>{$tresc}</i>
 			
-			Stanowisko: <b>{$stanowisko}</b>
-			
-			
-			---
+			<br><br>---<br>
 			Koduj dla Polski
 			";
 		}
 		
-									
-		$headers = 'From: ' . $email . ' <mailer@kodujdlapolski.pl>' . "\r\n";
 		
-		wp_mail($toemail, $temat, $wiadomosc, $headers, $attachments);
+		$mail = new PHPMailer;
+		$mail->isSMTP();
+		
+		//Enable SMTP debugging
+		// 0 = off (for production use)
+		// 1 = client messages
+		// 2 = client and server messages
+		$mail->SMTPDebug = 0;
+		$mail->Debugoutput = 'html';
+		
+		$mail->Host = 'smtp.gmail.com';
+		$mail->Port = 465;
+		$mail->SMTPSecure = 'ssl';
+		$mail->SMTPAuth = true;
+		
+		$mail->Username = MAILER_USER;
+		$mail->Password = MAILER_PASS;
+		
+		$mail->CharSet = 'utf-8';
+
+		$mail->setFrom( $email, 'Koduj dla Polski');
+		$mail->addCC($email, "$imie $nazwisko");
+		$mail->AddReplyTo($email, "$imie $nazwisko");
+		$mail->addAddress($toemail);
+		
+		$mail->Subject = $temat;
+		$mail->msgHTML( $wiadomosc );	
+		
+		
+		if($_FILES["file"]["name"]){
+			$mail->addAttachment( WP_CONTENT_DIR . '/uploads/emails/' . $_FILES["file"]["name"] );
+		}
+		
+		if (!$mail->send()) {
+		    echo "Błędy: " . $mail->ErrorInfo;
+		} else {
+		    echo "Wiadomość została wysłana! " . $toemail;
+		}
 							
 		
-		echo "Wiadomość została wysłana!";		
 ?>

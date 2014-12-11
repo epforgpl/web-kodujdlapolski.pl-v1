@@ -62,7 +62,7 @@
 							<figure class="Team-row-photo">
 								<img src="<?php bloginfo('template_url'); ?>/images/image-add-brigade.jpg" width="" height="" alt="">
 							</figure>
-							<h2 class="Team-row-title"><a class="open_ajax" href="<?php bloginfo('template_url'); ?>/framework/project-email.php?email=<?php the_field('email'); ?>&pozycja=<?php echo urlencode(get_sub_field('pozycja')); ?>">Dołącz jako <br><?php the_sub_field('pozycja'); ?></a></h2>
+							<h2 class="Team-row-title"><a class="open_ajax" href="<?php bloginfo('template_url'); ?>/framework/project-email.php?id=<?php echo $post->ID; ?>&pozycja=<?php echo urlencode(get_sub_field('pozycja')); ?>">Dołącz jako <br><?php the_sub_field('pozycja'); ?></a></h2>
 						</div>
 					<?php endwhile; ?>
 			<?php endif; wp_reset_postdata(); ?>

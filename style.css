@@ -6696,9 +6696,11 @@ body a:hover {
   vertical-align: middle;
 }
 .Projects-body .Projects-col .Projects-title {
-  margin: 0 0 10px 0;
+  margin: 10px 0 10px 0;
 }
-.Projects-body .Projects-col a, .Projects-body .Projects-col .Projects-title h1 {
+.Projects-body .Projects-col a {
+}
+.Projects-body .Projects-col .Projects-title h1 {
   color: #d20a11;
   font-size: 20px;
 }

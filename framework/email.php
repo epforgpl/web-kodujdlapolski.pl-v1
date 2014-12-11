@@ -70,31 +70,25 @@
 		$tresc = nl2br($tresc);
 		
 		if ($stanowisko == "Zaproponuj temat"){
-			$temat = "Nowa propozycja tematu od {$imie} {$nazwisko}";
+			$temat = "[KdP] Propozycja tematu od {$imie} {$nazwisko}";
 			$wiadomosc = "
-			Otrzymałeś/aś nową propozycje tematu od {$imie} {$nazwisko}.<br><br> 
+			Otrzymałeś/aś nową propozycje tematu od <b>{$imie} {$nazwisko}</b>.<br><br> 
 			
 			Oto jego treść:<br>
-			<b>{$tresc}</b><br><br>
+			<i>{$tresc}</i>
 			
-			Stanowisko: <b>{$stanowisko}</b><br><br><br>
-			
-			
-			---<br>
+			<br><br>---<br>
 			Koduj dla Polski
 			";
 		} else {
-			$temat = "Nowe zgłoszenie od {$imie} {$nazwisko}";
-			$wiadomosc = "
-			Otrzymałeś/aś nowe zgłoszenie od {$imie} {$nazwisko}.<br><br> 
+			$temat = "[KdP] Zgłoszenie do projektu od {$imie} {$nazwisko}";
+			$wiadomosc = " 
+			Otrzymałeś/aś nowe zgłoszenie od <b>{$imie} {$nazwisko}</b> na stanowisko <b>{$stanowisko}</b>.<br><br> 
 			
 			Oto jego treść:<br>
-			<b>{$tresc}</b><br><br>
+			<i>{$tresc}</i>
 			
-			Stanowisko: <b>{$stanowisko}</b><br><br><br>
-			
-			
-			---<br>
+			<br><br>---<br>
 			Koduj dla Polski
 			";
 		}
@@ -115,13 +109,15 @@
 		$mail->SMTPSecure = 'ssl';
 		$mail->SMTPAuth = true;
 		
-		$mail->Username = "mailer@kodujdlapolski.pl";
-		$mail->Password = "mopsmailer";
+		$mail->Username = MAILER_USER;
+		$mail->Password = MAILER_PASS;
 		
 		$mail->CharSet = 'utf-8';
 
 		$mail->setFrom( $email, 'Koduj dla Polski');
-		$mail->addAddress( $toemail );
+		$mail->addCC($email, "$imie $nazwisko");
+		$mail->AddReplyTo($email, "$imie $nazwisko");
+		$mail->addAddress($toemail);
 		
 		$mail->Subject = $temat;
 		$mail->msgHTML( $wiadomosc );	

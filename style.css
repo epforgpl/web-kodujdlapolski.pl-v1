@@ -744,6 +744,7 @@ pre code {
   margin-left: auto;
   padding-left: 15px;
   padding-right: 15px;
+  padding-bottom: 30px;
 }
 @media (min-width: 768px) {
   .container {
@@ -6009,6 +6010,14 @@ body a:hover {
   margin-left: -275px;
   z-index: 1;
 }
+.head-title-projects.spacer:before {
+    left: 0%;
+    width: 100%;
+    margin-left: 0px;
+}
+.head-title-projects.spacer a {
+    color: black;
+}
 /* === NAVBAR
 =================================== */
 .navbar {
@@ -6689,7 +6698,7 @@ body a:hover {
 .Projects-body .Projects-col .Projects-title {
   margin: 0 0 10px 0;
 }
-.Projects-body .Projects-col .Projects-title a {
+.Projects-body .Projects-col a, .Projects-body .Projects-col .Projects-title h1 {
   color: #d20a11;
   font-size: 20px;
 }

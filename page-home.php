@@ -3,7 +3,7 @@
 
 	<header class="header">
 	  <div class="header-title">
-	    <p>Koduj Dla Polski to interdyscyplinarna społeczność poszukująca technologicznych rozwiązań społecznych problemów<br><a href="http://<?php the_field('join'); ?>"<strong>Dołącz do nas</strong></p>
+	    <p>Koduj Dla Polski to interdyscyplinarna społeczność poszukująca technologicznych rozwiązań społecznych problemów<br><a href="<?php the_field('join'); ?>"><strong>Dołącz do nas</strong></a></p>
 	  </div> <!-- / .header-title -->
 
 	<?php
@@ -123,7 +123,7 @@ $until_unix_timestamp = strtotime($until_date);
 
 
 	<?php if( have_rows('three_boxes') ): ?>
-		<div class="threeBoxes row">
+		<div class="threeBoxes row" id="dzialaj">
 			<?php while( have_rows('three_boxes') ): the_row();  ?>
 				  <article class="threeBoxes-col">
 				    <div class="threeBoxes-in">
@@ -160,6 +160,7 @@ $until_unix_timestamp = strtotime($until_date);
 			<?php while ($q->have_posts()): $q->the_post() ?>
 				  <article class="homeProjects-col">
 				    <figure class="homeProjects-image">
+					<span class="helper"></span>
 					    <?php
 							$img = get_field('img_header');
 							$size = 'thumbnail';

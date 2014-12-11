@@ -6168,6 +6168,13 @@ body a:hover {
   color: #fff;
   font-size: 24px;
 }
+.header-title a {
+	color: #d20a11;
+	text-transform: uppercase;
+	font-size: 23px;
+	font-weight: bold;
+}
+
 @media (max-width: 767px) {
   .header-title {
 	bottom: 0px;
@@ -6180,7 +6187,7 @@ body a:hover {
 }
 @media (min-width: 768px) {
   .header-title {
-    bottom: 70px;
+    bottom: 5px;
     right: 385px;
   }
 }
@@ -6449,11 +6456,14 @@ body a:hover {
   }
 }
 .homeProjects-image {
-  border: 1px solid #ededed;
+#  border: 1px solid #ededed;
   margin-bottom: 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  height: 163px;
 }
 .homeProjects-image > img {
-  display: block;
+# display: block;
   max-width: 100%;
   height: auto;
 }
@@ -6690,7 +6700,7 @@ body a:hover {
   width: 100%;
   height: auto;
 }
-.Projects-body .Projects-col .helper {
+.Projects-body .Projects-col .helper, .homeProjects-image .helper {
   display: inline-block; 
   height: 100%; 
   vertical-align: middle;

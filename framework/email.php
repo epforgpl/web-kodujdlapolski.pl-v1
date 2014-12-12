@@ -130,7 +130,7 @@
 		if (!$mail->send()) {
 		    echo "Błędy: " . $mail->ErrorInfo;
 		} else {
-		    echo "Wiadomość została wysłana! " . $toemail;
+		    echo "Wiadomość została wysłana!";
 		}
 							
 		

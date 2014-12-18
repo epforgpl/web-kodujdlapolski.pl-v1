@@ -110,7 +110,7 @@ $until_unix_timestamp = strtotime($until_date);
 				<img src="<?php bloginfo('template_url'); ?>/images/icon-stats-projects.png" width="" height="" alt="">
 				</figure>
 				<div class="stats-info">
-					<span class="stats-info-label">Realizowane projekty</span>
+					<span class="stats-info-label">Wspierane projekty</span>
 					<strong class="stats-info-number"><?php $count_posts = wp_count_posts('projects');
 						echo $count_posts->publish; ?></strong>
 				</div>
@@ -155,7 +155,7 @@ $until_unix_timestamp = strtotime($until_date);
 	?>
 
 	<?php if ($q->have_posts()): ?>
-		<h2 class="spacer"><span>Projekty</span></h2>
+		<h2 class="spacer"><span>Wspierane projekty</span></h2>
 		<div class="homeProjects row">
 			<?php while ($q->have_posts()): $q->the_post() ?>
 				  <article class="homeProjects-col">

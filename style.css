@@ -8278,7 +8278,7 @@ body a:hover {
 
 .sidebar p {
     font-size: 12px;
-    margin: 20px 0 40px 0;
+    margin: 10px 0 30px;
 }
 
 .sidebar .Projects--add {
@@ -8487,10 +8487,19 @@ body a:hover {
     }
 }
 
+.Brigade-body-header {
+    height: 300px;
+    position: relative;
+    overflow: hidden;
+}
+
 .Brigade-body-header img {
     display: block;
     max-width: 100%;
     height: auto;
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
 }
 
 .Brigade-body .members-title {
@@ -8518,6 +8527,16 @@ body a:hover {
 .Brigade-body .member-col-photo {
     float: left;
     margin-right: 20px;
+}
+
+.Brigade-body .member-col-photo img {
+    width: 65px;
+    height: 65px;
+    -webkit-border-radius: 150px;
+    -moz-border-radius: 150px;
+    -ms-border-radius: 150px;
+    -o-border-radius: 150px;
+    border-radius: 150px;
 }
 
 .Brigade-body .member-col-title {

@@ -8202,6 +8202,22 @@ body a:hover {
     clear: both;
 }
 
+.Page-body .head-title.head-line {
+    border-bottom: 3px solid #ededed;
+    height: 0;
+    position: relative;
+}
+
+.Page-body .head-title.head-line > span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 0 20px;
+    background-color: #ffffff;
+    font-size: 20px;
+}
+
 .Page-body-contacts .contact-col {
     float: left;
     width: 100%;

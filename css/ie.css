@@ -12,9 +12,10 @@
 */
 /* FONT_FACE mixin */
 body {
-  direction: ltr;
-  text-align: left;
+	direction: ltr;
+	text-align: left;
 }
+
 body a:hover {
-  text-decoration: none;
+	text-decoration: none;
 }

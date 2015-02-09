@@ -139,7 +139,7 @@
         </aside>
 
         <aside class="Projects-col Projects--add">
-            <a href="http://forum.kodujdlapolski.pl/" target="_blank" class="Projects-add"><span>Masz pomysł na aplikację? <br>
+            <a href="http://forum.kodujdlapolski.pl/t/jak-dodawac-nowe-pomysly/899" class="Projects-add"><span>Masz pomysł na aplikację? <br>
 				Zgłoś go! <i>&rsaquo;</i></span></a>
         </aside>
     </section>

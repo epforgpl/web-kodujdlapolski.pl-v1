@@ -189,7 +189,7 @@ $q = new WP_Query($args);
         <?php endwhile; ?>
 
         <article class="homeProjects-col homeProjects-col--add">
-            <a href="http://forum.kodujdlapolski.pl/" target="_blank" class="homeProjects-add"><span>Masz pomysł na aplikację? <br>Zgłoś go! <i>&rsaquo;</i></span></a>
+            <a href="http://forum.kodujdlapolski.pl/t/jak-dodawac-nowe-pomysly/899" class="homeProjects-add"><span>Masz pomysł na aplikację? <br>Zgłoś go! <i>&rsaquo;</i></span></a>
         </article>
 
         <div class="homeProjects-bottom">

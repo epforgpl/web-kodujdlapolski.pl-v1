@@ -33,7 +33,7 @@
                 </article><!-- / .Projects-col -->
             <?php endwhile; ?>
             <article class="Projects-col Projects-col--add">
-                <a href="http://forum.kodujdlapolski.pl/" class="Projects-add"><span>Masz pomysł na aplikację? <br>
+                <a href="http://forum.kodujdlapolski.pl/t/jak-dodawac-nowe-pomysly/899" class="Projects-add"><span>Masz pomysł na aplikację? <br>
 				Zgłoś go! <i>&rsaquo;</i></span></a>
             </article>
             <!-- / .Projects-col -->

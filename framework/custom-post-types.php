@@ -34,7 +34,7 @@ function projects_type_init()
         'capability_type' => 'project',
         'map_meta_cap' => true,
         'taxonomies' => array('category'),
-        'supports' => array('title', 'editor', 'thumbnail')
+        'supports' => array('title', 'editor', 'thumbnail', 'author')
     );
 
     register_post_type('projects', $args);
@@ -77,7 +77,7 @@ function brigades_type_init()
         'capability_type' => 'brigade',
         'map_meta_cap' => true,
         'taxonomies' => array('category'),
-        'supports' => array('title', 'editor', 'thumbnail')
+        'supports' => array('title', 'editor', 'thumbnail', 'author')
     );
 
     register_post_type('brigades', $args);
@@ -120,7 +120,7 @@ function partners_type_init()
         'capability_type' => 'partner',
         'map_meta_cap' => true,
         'taxonomies' => false,
-        'supports' => array('title')
+        'supports' => array('title', 'author')
     );
 
     register_post_type('partners', $args);

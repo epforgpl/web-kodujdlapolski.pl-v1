@@ -1,4 +1,6 @@
-<?php get_header(); ?>
+<?php get_header(); 
+query_posts($query_string . '&showposts=-1'); 
+?>
     <section class="Page">
         <div class="section-head">
             <ol class="breadcrumbs">

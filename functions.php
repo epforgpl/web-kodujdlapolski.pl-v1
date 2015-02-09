@@ -54,6 +54,7 @@ function primary_menu()
 {
 
     $menu_name = 'primary';
+    $menu_list = '';
     $i = 1;
 
     if (($locations = get_nav_menu_locations()) && isset($locations[$menu_name])) {
@@ -136,3 +137,4 @@ function the_breadcrumb()
     }
     echo '</ol>';
 }
+

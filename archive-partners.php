@@ -10,9 +10,8 @@
         </div>
 
         <article class="Page-body row">
-            <?php query_posts($query_string . "&orderby=title&order=ASC"); ?>
+            <?php query_posts($query_string . "&orderby=date&order=ASC"); ?>
             <?php while (have_posts()) : the_post(); ?>
-                <?php if (get_the_title() == 'Partnerzy Generalni') { ?>
                     <div class="Page-body-row clearfix">
                         <?php if (have_rows('partners')): ?>
                             <?php if (get_field('show_partners')): ?>
@@ -40,41 +39,9 @@
                                     <?php endwhile; ?>
                                 </div>
                             <?php endif; ?>
-                        <?php endif; ?>
+			 <?php endif; ?>
                     </div>
-                <?php } endwhile; ?>
-            <?php while (have_posts()) : the_post(); ?>
-                <?php if (get_the_title() != 'Partnerzy Generalni') { ?>
-                    <div class="Page-body-row clearfix">
-                        <?php if (have_rows('partners')): ?>
-                            <?php if (get_field('show_partners')): ?>
-                                <h3 class="head-title head-line"><span><?php the_title(); ?></span></h3>
-                                <div class="Page-body-row-images">
-                                    <?php while (have_rows('partners')): the_row(); ?>
-                                        <?php
-                                        $img = get_sub_field('logo');
-
-                                        $size = 'partners';
-                                        $alt = $img['alt'];
-                                        $url = $img['url'];
-
-                                        $thumb = $img['sizes'][$size];
-                                        $width = $img['sizes'][$size . '-width'];
-                                        $height = $img['sizes'][$size . '-height'];
-
-                                        if ($thumb != ""):
-                                            ?>
-                                            <figure><a target="_blank" href="<?php the_sub_field('url'); ?>"><img
-                                                        src="<?php echo $thumb; ?>" width="<?php echo $width; ?>"
-                                                        height="<?php echo $height; ?>" alt="<?php echo $alt; ?>"></a>
-                                            </figure>
-                                        <?php endif; ?>
-                                    <?php endwhile; ?>
-                                </div>
-                            <?php endif; ?>
-                        <?php endif; ?>
-                    </div>
-                <?php } endwhile;
+                <?php endwhile;
             wp_reset_postdata(); ?>
         </article>
 
